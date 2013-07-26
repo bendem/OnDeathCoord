@@ -4,9 +4,4 @@ Thumbs.db
 # Folder config file
 Desktop.ini
 
-build/
-dist/
-lib/
-nbproject/
-*.xml
-*.mf
+target/

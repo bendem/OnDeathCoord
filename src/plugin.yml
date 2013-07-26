@@ -1,5 +1,0 @@
-name: OnDeathCoord
-main: be.bendem.OnDeathCoord.OnDeathCoord
-version: 0.1
-author: bendem
-description: Affiche les coordonées de votre mort dans le chat
