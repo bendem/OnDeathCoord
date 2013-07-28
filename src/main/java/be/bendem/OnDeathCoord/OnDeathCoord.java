@@ -10,16 +10,18 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class OnDeathCoord extends JavaPlugin {
 
+	PluginDescriptionFile pdfFile;
+
 	@Override
 	public void onEnable() {
-		PluginDescriptionFile pdfFile = this.getDescription();
-		getLogger().info(pdfFile.getName() + " version " + pdfFile.getVersion() + " is enabled!");
+		this.pdfFile = this.getDescription();
+		getLogger().info(this.pdfFile.getName() + " version " + this.pdfFile.getVersion() + " is enabled!");
 
 		getServer().getPluginManager().registerEvents(new DeathListener(), this);
 	}
 
 	@Override
 	public void onDisable() {
-		getLogger().info("Goodbye world!");
+		getLogger().info(this.pdfFile.getName() + " vous souhaite une bonne journee ;-)");
 	}
 }
