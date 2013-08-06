@@ -22,6 +22,6 @@ public class OnDeathCoord extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-		getLogger().info(this.pdfFile.getName() + " vous souhaite une bonne journee ;-)");
+		getLogger().info(this.pdfFile.getName() + " want you to have a nice day ;-)");
 	}
 }

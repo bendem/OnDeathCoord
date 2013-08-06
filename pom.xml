@@ -4,7 +4,7 @@
 
 	<groupId>be.bendem.OnDeathCoord</groupId>
 	<artifactId>OnDeathCoord</artifactId>
-	<version>1.1</version>
+	<version>1.2</version>
 	<packaging>jar</packaging>
 
 	<name>OnDeathCoord</name>
@@ -25,7 +25,7 @@
 		<dependency>
 			<groupId>org.bukkit</groupId>
 			<artifactId>bukkit</artifactId>
-			<version>1.5.2-R1.0</version>
+			<version>1.6.2-R0.1</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
