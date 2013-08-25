@@ -1,11 +1,22 @@
-## Le plugin
+# OnDeathCoord
 
-Ceci est mon premier plugin bukkit.
+## English
 
-Il est très simple, il ajoute simplement les coordonées de mort au message par défaut...
+### Description
 
-*Je l'ai codé avec l'api 1.5.2, mais je ne pense pas que ça change quoi que ce soit...*
+Add your death coords to your death message.
 
-## Dev
+### Download
 
-J'utilise maven pour la compilation, les builds automatisées sont disponibles [ici](https://drone.io/github.com/bendem/OnDeathCoord/files).
+Automatic builds are available here : [https://drone.io/github.com/bendem/OnDeathCoord/files](https://drone.io/github.com/bendem/OnDeathCoord/files)
+
+
+## Français
+
+### Description
+
+Ajoute les coordonées de votre mort au message par défaut.
+
+### Téléchargement
+
+Les builds sont disponible ici : [https://drone.io/github.com/bendem/OnDeathCoord/files](https://drone.io/github.com/bendem/OnDeathCoord/files)
