@@ -1,14 +1,16 @@
 # If true, the coordonates are added to the death message using the
 # messages setted after
 # If false, a private message will be send directly to the player
-public: true
-public-messages:
-    block_explosion:
+public-death: true
+
+# These messages should contain 2 ``%s`` for each message!
+public-death-messages:
+    block_explosion:  "Un block a pété à la gueule de %s en %s"
     contact:          "%s s'est frotté à un cactus en %s"
     custom:           "%s est mort en %s"
     drowning:         "%s est mort noyé en %s"
     entity_attack:    "%s s'est fait défoncer en %s"
-    entity_explosion: "%s s'est fait pêté en %s"
+    entity_explosion: "%s s'est fait exploser en %s"
     fall:             "%s est tombé d'un peu haut en %s"
     falling_block:    "%s s'est pris un bloc sur le crâne en %s"
     fire:             "%s s'est brulé les doigts en %s"
@@ -24,8 +26,18 @@ public-messages:
     suicide:          "%s s'est suicidé en %s"
     thorns:           "%s a trop tapé dans une boule d'épines en %s"
     void:             "%s est tombé dans le vide intersidéral en %s"
-    wither:           "%s s'est fait ravagé par un wither en %s"
-private-message: "Vous êtes mort en %s"
+    wither:           "%s s'est fait ravager par un wither en %s"
+
+# This message should contain one ``%s``
+# Note that the despawn message will be added after this line
+private-death-message: "Vous êtes mort en %s."
 
 # If true, a message will be added to know when the stuff will despawn
-despawn-time: true
+# Note that the message is only shown if the player drop items
+show-despawn-time: true
+# Implementation in progress
+remind-at-despawn: true
+# Default item despawn time is 5 minutes (300 seconds)
+despawn-time: 300
+# This message should contain one ``%s``
+despawn-message: "Votre stuff déspawnera à %s"
