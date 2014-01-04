@@ -7,11 +7,18 @@ import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class DeathListener implements Listener {
+
+    public JavaPlugin plugin;
+
+    public void DeathListener(JavaPlugin plugin) {
+        this.plugin = plugin;
+    }
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
@@ -25,8 +32,8 @@ public class DeathListener implements Listener {
             + Math.round(playerLocation.getZ())
         );
 
-        if(OnDeathCoord.config.getBoolean("public-death")) {
-            deathMessage = OnDeathCoord.config.getString(
+        if(plugin.getConfig().getBoolean("public-death")) {
+            deathMessage = plugin.getConfig().getString(
                 "public-death-messages." + player.getLastDamageCause().getCause().name().toLowerCase(),
                 "%s died at %s"
             );
@@ -34,7 +41,7 @@ public class DeathListener implements Listener {
             deathMessage = String.format(deathMessage, ChatFormatter.darkGreen(player.getDisplayName()), coordinates);
             event.setDeathMessage(deathMessage);
         } else {
-            deathMessage = OnDeathCoord.config.getString(
+            deathMessage = plugin.getConfig().getString(
                 "private-death-message",
                 ChatFormatter.bold("You") + ChatFormatter.darkGray(" died at ") + "%s"
             );
@@ -43,20 +50,26 @@ public class DeathListener implements Listener {
             playerMessage = deathMessage + " ";
         }
 
-        if(OnDeathCoord.config.getBoolean("show-despawn-time") && event.getDrops().size() != 0) {
-            playerMessage += OnDeathCoord.config.getString("despawn-message", "Your items will despawn at %s");
+        if(plugin.getConfig().getBoolean("show-despawn-time") && event.getDrops().size() != 0) {
+            playerMessage += plugin.getConfig().getString("despawn-message", "Your items will despawn at %s");
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
             Calendar cal = Calendar.getInstance();
-            cal.add(Calendar.SECOND, OnDeathCoord.config.getInt("despawn-time", 300));
+            cal.add(Calendar.SECOND, plugin.getConfig().getInt("despawn-time", 300));
 
             // injection
             playerMessage = String.format(playerMessage, ChatFormatter.red(sdf.format(cal.getTime())));
         }
         player.sendMessage(playerMessage);
 
-        if(OnDeathCoord.config.getBoolean("remind-at-despawn")) {
+        if(plugin.getConfig().getBoolean("remind-at-despawn")) {
             // TODO Ajout du schedule de despawn message
             // http://jd.bukkit.org/beta/apidocs/index.html?org/bukkit/scheduler/BukkitScheduler.html
+            // There are normally (I mean without lag) 20 ticks per seconds
+            plugin.getServer().getScheduler().runTaskLater(
+                plugin,
+                new PlayerDespawnReminder(player),
+                20 * plugin.getConfig().getInt("despawn-time", 300)
+            );
         }
     }
 }
