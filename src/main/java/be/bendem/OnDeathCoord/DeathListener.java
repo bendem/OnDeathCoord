@@ -7,16 +7,15 @@ import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class DeathListener implements Listener {
 
-    public JavaPlugin plugin;
+    public OnDeathCoord plugin;
 
-    public void DeathListener(JavaPlugin plugin) {
+    DeathListener(OnDeathCoord plugin) {
         this.plugin = plugin;
     }
 
@@ -39,7 +38,7 @@ public class DeathListener implements Listener {
             );
             // injecting informations
             deathMessage = String.format(deathMessage, ChatFormatter.darkGreen(player.getDisplayName()), coordinates);
-            event.setDeathMessage(deathMessage);
+            event.setDeathMessage(plugin.prefix(deathMessage, false));
         } else {
             deathMessage = plugin.getConfig().getString(
                 "private-death-message",
@@ -59,17 +58,16 @@ public class DeathListener implements Listener {
             // injection
             playerMessage = String.format(playerMessage, ChatFormatter.red(sdf.format(cal.getTime())));
         }
-        player.sendMessage(playerMessage);
 
-        if(plugin.getConfig().getBoolean("remind-at-despawn")) {
-            // TODO Ajout du schedule de despawn message
-            // http://jd.bukkit.org/beta/apidocs/index.html?org/bukkit/scheduler/BukkitScheduler.html
+        if(!playerMessage.isEmpty()) {
+            player.sendMessage(plugin.prefix(playerMessage, true));
+        }
+
+        if(plugin.getConfig().getBoolean("remind-at-despawn") && event.getDrops().size() != 0) {
             // There are normally (I mean without lag) 20 ticks per seconds
-            PlayerDespawnReminder psd = new PlayerDespawnReminder(plugin, player);
             plugin.getServer().getScheduler().runTaskLater(
                 plugin,
-                // new PlayerDespawnReminder(plugin, player),
-                psd,
+                new PlayerDespawnReminder(plugin, player),
                 20 * plugin.getConfig().getInt("despawn-time", 300)
             );
         }

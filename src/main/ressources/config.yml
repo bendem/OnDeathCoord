@@ -42,3 +42,7 @@ despawn-time: 300
 # This message should contain one ``%s``
 despawn-time-message: "Votre stuff déspawnera à %s"
 despawn-message: "Votre stuff vient de disparaitre..."
+
+# Set to false to remove the [OnDeathCoord] prefix from the chat messages
+prefix-public-messages: true
+prefix-private-messages: true
