@@ -1,7 +1,10 @@
 package be.bendem.OnDeathCoord;
 
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.logging.Logger;
 
 /**
  * OnDeathCoord for Bukkit
@@ -10,18 +13,23 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class OnDeathCoord extends JavaPlugin {
 
-	PluginDescriptionFile pdfFile;
+    PluginDescriptionFile pdfFile;
+    public static FileConfiguration config;
+    public static Logger logger;
 
-	@Override
-	public void onEnable() {
-		this.pdfFile = this.getDescription();
-		getLogger().info(this.pdfFile.getName() + " version " + this.pdfFile.getVersion() + " is enabled!");
+    @Override
+    public void onEnable() {
+        this.logger = this.getLogger();
+        this.config = this.getConfig();
+        this.pdfFile = this.getDescription();
+        this.getLogger().info(this.pdfFile.getName() + " version " + this.pdfFile.getVersion() + " is enabled!");
 
-		getServer().getPluginManager().registerEvents(new DeathListener(), this);
-	}
+        this.saveDefaultConfig();
+        this.getServer().getPluginManager().registerEvents(new DeathListener(), this);
+    }
 
-	@Override
-	public void onDisable() {
-		getLogger().info(this.pdfFile.getName() + " want you to have a nice day ;-)");
-	}
+    @Override
+    public void onDisable() {
+        this.getLogger().info(this.pdfFile.getName() + " want you to have a nice day ;-)");
+    }
 }

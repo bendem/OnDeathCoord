@@ -1,0 +1,31 @@
+# If true, the coordonates are added to the death message using the
+# messages setted after
+# If false, a private message will be send directly to the player
+public: true
+public-messages:
+    block_explosion:
+    contact:          "%s s'est frotté à un cactus en %s"
+    custom:           "%s est mort en %s"
+    drowning:         "%s est mort noyé en %s"
+    entity_attack:    "%s s'est fait défoncer en %s"
+    entity_explosion: "%s s'est fait pêté en %s"
+    fall:             "%s est tombé d'un peu haut en %s"
+    falling_block:    "%s s'est pris un bloc sur le crâne en %s"
+    fire:             "%s s'est brulé les doigts en %s"
+    fire_tick:        "%s est resté trop longtemps près du feu en %s"
+    lava:             "%s a pris un bain de lave en %s"
+    lightning:        "%s a pris un éclair sur le coin en %s"
+    magic:            "%s a subitement disparu en %s"
+    melting:          "%s a fondu? en %s"
+    poison:           "%s a mangé un truc empoisoné en %s"
+    projectile:       "%s s'est pris une flèche dans l'oeil en %s"
+    starvation:       "%s est crevé de fin en %s"
+    suffocation:      "%s est mort dans un bloc en %s"
+    suicide:          "%s s'est suicidé en %s"
+    thorns:           "%s a trop tapé dans une boule d'épines en %s"
+    void:             "%s est tombé dans le vide intersidéral en %s"
+    wither:           "%s s'est fait ravagé par un wither en %s"
+private-message: "Vous êtes mort en %s"
+
+# If true, a message will be added to know when the stuff will despawn
+despawn-time: true
