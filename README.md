@@ -1,5 +1,7 @@
 # OnDeathCoord
 
+![Preview](preview.jpg)
+
 ## English
 
 ### Description
