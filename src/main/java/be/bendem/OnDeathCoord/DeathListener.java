@@ -51,7 +51,7 @@ public class DeathListener implements Listener {
         }
 
         if(plugin.getConfig().getBoolean("show-despawn-time") && event.getDrops().size() != 0) {
-            playerMessage += plugin.getConfig().getString("despawn-message", "Your items will despawn at %s");
+            playerMessage += plugin.getConfig().getString("despawn-time-message", "Your items will despawn at %s");
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
             Calendar cal = Calendar.getInstance();
             cal.add(Calendar.SECOND, plugin.getConfig().getInt("despawn-time", 300));
@@ -65,9 +65,11 @@ public class DeathListener implements Listener {
             // TODO Ajout du schedule de despawn message
             // http://jd.bukkit.org/beta/apidocs/index.html?org/bukkit/scheduler/BukkitScheduler.html
             // There are normally (I mean without lag) 20 ticks per seconds
+            PlayerDespawnReminder psd = new PlayerDespawnReminder(plugin, player);
             plugin.getServer().getScheduler().runTaskLater(
                 plugin,
-                new PlayerDespawnReminder(player),
+                // new PlayerDespawnReminder(plugin, player),
+                psd,
                 20 * plugin.getConfig().getInt("despawn-time", 300)
             );
         }

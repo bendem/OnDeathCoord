@@ -40,4 +40,5 @@ remind-at-despawn: true
 # Default item despawn time is 5 minutes (300 seconds)
 despawn-time: 300
 # This message should contain one ``%s``
-despawn-message: "Votre stuff déspawnera à %s"
+despawn-time-message: "Votre stuff déspawnera à %s"
+despawn-message: "Votre stuff vient de disparaitre..."

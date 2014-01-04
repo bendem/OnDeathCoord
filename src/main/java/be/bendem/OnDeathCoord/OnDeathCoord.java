@@ -13,23 +13,23 @@ import java.util.logging.Logger;
  */
 public class OnDeathCoord extends JavaPlugin {
 
-    PluginDescriptionFile pdfFile;
-    public static FileConfiguration config;
-    public static Logger logger;
+    public PluginDescriptionFile pdfFile;
+    public FileConfiguration config;
+    public Logger logger;
 
     @Override
     public void onEnable() {
-        this.logger = this.getLogger();
-        this.config = this.getConfig();
-        this.pdfFile = this.getDescription();
-        this.getLogger().info(this.pdfFile.getName() + " version " + this.pdfFile.getVersion() + " is enabled!");
+        logger = getLogger();
+        config = getConfig();
+        pdfFile = getDescription();
+        getLogger().info(pdfFile.getName() + " version " + pdfFile.getVersion() + " is enabled!");
 
-        this.saveDefaultConfig();
-        this.getServer().getPluginManager().registerEvents(new DeathListener(), this);
+        saveDefaultConfig();
+        getServer().getPluginManager().registerEvents(new DeathListener(), this);
     }
 
     @Override
     public void onDisable() {
-        this.getLogger().info(this.pdfFile.getName() + " want you to have a nice day ;-)");
+        getLogger().info(pdfFile.getName() + " want you to have a nice day ;-)");
     }
 }
