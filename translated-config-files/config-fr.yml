@@ -1,0 +1,48 @@
+# If true, the coordinates are added to the death message using the
+# messages setted after
+# If false, a private message will be send directly to the player
+public-death: true
+
+# These messages should contain 2 ``%s`` for each message!
+public-death-messages:
+    block_explosion:  "Un block a pété à la gueule de %s en %s"
+    contact:          "%s s'est frotté à un cactus en %s"
+    custom:           "%s est mort en %s"
+    drowning:         "%s est mort noyé en %s"
+    entity_attack:    "%s s'est fait défoncer en %s"
+    entity_explosion: "%s s'est fait exploser en %s"
+    fall:             "%s est tombé d'un peu haut en %s"
+    falling_block:    "%s s'est pris un bloc sur le crâne en %s"
+    fire:             "%s s'est brulé les doigts en %s"
+    fire_tick:        "%s est resté trop longtemps près du feu en %s"
+    lava:             "%s a pris un bain de lave en %s"
+    lightning:        "%s a pris un éclair sur le coin en %s"
+    magic:            "%s a subitement disparu en %s"
+    melting:          "%s a fondu? en %s"
+    poison:           "%s a mangé un truc empoisoné en %s"
+    projectile:       "%s s'est pris une flèche dans l'oeil en %s"
+    starvation:       "%s est crevé de fin en %s"
+    suffocation:      "%s est mort dans un bloc en %s"
+    suicide:          "%s s'est suicidé en %s"
+    thorns:           "%s a trop tapé dans une boule d'épines en %s"
+    void:             "%s est tombé dans le vide intersidéral en %s"
+    wither:           "%s s'est fait ravager par un wither en %s"
+
+# This message should contain one ``%s``
+# Note that the despawn message will be added after this line
+private-death-message: "Vous êtes mort en %s."
+
+# If true, a message will be added to know when the stuff will despawn
+# Note that the message is only shown if the player drop items
+show-despawn-time: true
+# Send a message to the player when his items has disappeared
+remind-at-despawn: true
+# Default item despawn time is 5 minutes (300 seconds)
+despawn-time: 300
+# This message should contain one ``%s``
+despawn-time-message: "Votre stuff déspawnera à %s"
+despawn-message: "Votre stuff vient de disparaitre..."
+
+# Set to false to remove the [OnDeathCoord] prefix from the chat messages
+prefix-public-messages: true
+prefix-private-messages: true
