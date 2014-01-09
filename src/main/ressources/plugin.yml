@@ -2,4 +2,35 @@ name: ${pom.name}
 main: ${pom.groupId}.${pom.name}
 version: ${pom.version}
 author: bendem
-description: Affiche les coordonées de votre mort dans le chat
+description: Display your death coordinates in the chat.
+
+permissions:
+    odc.*:
+        description: Give access to all OnDeathCoord commands
+        children:
+            odc.reload: true
+            odc.set: true
+            odc.view-messages: true
+    odc.reload:
+        description: Reload config from file
+        default: op
+    odc.set:
+        description: Activate or deactivate a functionnality
+        default: op
+    odc.view-messages:
+        description: View OnDeathCoord messages
+        default: true
+        children:
+            odc.view-messages.private-coordinates: true
+            odc.view-messages.item-despawn: true
+    odc.view-messages.private-coordinates:
+        description: Can the player receive private death message
+        default: true
+    odc.view-messages.item-despawn:
+        description: Can the player receive item despawn message
+        default: true
+        children:
+            odc.view-messages.item-despawn.reminder: true
+    odc.view-messages.item-despawn.reminder:
+        description: Can the player receive the despawn message when his items has disappeared
+        default: true

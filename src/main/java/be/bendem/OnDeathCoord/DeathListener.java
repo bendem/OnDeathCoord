@@ -39,7 +39,7 @@ public class DeathListener implements Listener {
             // injecting informations
             deathMessage = String.format(deathMessage, ChatFormatter.darkGreen(player.getDisplayName()), coordinates);
             event.setDeathMessage(plugin.prefix(deathMessage, false));
-        } else {
+        } else if(player.hasPermission("odc.view-messages.private-coordinates")) {
             deathMessage = plugin.getConfig().getString(
                 "private-death-message",
                 ChatFormatter.bold("You") + ChatFormatter.darkGray(" died at ") + "%s"
@@ -49,7 +49,9 @@ public class DeathListener implements Listener {
             playerMessage = deathMessage + " ";
         }
 
-        if(plugin.getConfig().getBoolean("show-despawn-time") && event.getDrops().size() != 0) {
+        if(plugin.getConfig().getBoolean("show-despawn-time")
+           && player.hasPermission("odc.view-messages.item-despawn")
+           && event.getDrops().size() != 0) {
             playerMessage += plugin.getConfig().getString("despawn-time-message", "Your items will despawn at %s");
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
             Calendar cal = Calendar.getInstance();
@@ -63,7 +65,9 @@ public class DeathListener implements Listener {
             player.sendMessage(plugin.prefix(playerMessage, true));
         }
 
-        if(plugin.getConfig().getBoolean("remind-at-despawn") && event.getDrops().size() != 0) {
+        if(plugin.getConfig().getBoolean("remind-at-despawn")
+           && player.hasPermission("odc.view-messages.item-despawn.reminder")
+           && event.getDrops().size() != 0) {
             // There are normally (I mean without lag) 20 ticks per seconds
             plugin.getServer().getScheduler().runTaskLater(
                 plugin,
