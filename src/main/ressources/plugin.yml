@@ -4,6 +4,14 @@ version: ${pom.version}
 author: bendem
 description: Display your death coordinates in the chat.
 
+commands:
+    odc:
+        usage: |
+            /<command> <reload> Reload config from file
+            /<command> <set> <config-node> <true|false> Activate or deactivate a functionnality
+        description: OnDeathCoord commands
+        permission: odc
+
 permissions:
     odc.*:
         description: Give access to all OnDeathCoord commands

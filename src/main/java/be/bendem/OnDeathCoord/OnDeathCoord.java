@@ -15,17 +15,22 @@ import java.util.logging.Logger;
  */
 public class OnDeathCoord extends JavaPlugin {
 
+    public Logger logger;
+
     @Override
     public void onEnable() {
-        getLogger().info(getDescription().getName() + " version " + getDescription().getVersion() + " is enabled!");
+        logger = getLogger();
+        logger.info(getDescription().getName() + " version " + getDescription().getVersion() + " is enabled!");
 
         saveDefaultConfig();
         getServer().getPluginManager().registerEvents(new DeathListener(this), this);
+        getCommand("odc").setExecutor(new CommandHandler(this));
+        getCommand("odc").setTabCompleter(new CommandHandler(this));
     }
 
     @Override
     public void onDisable() {
-        getLogger().info(getDescription().getName() + " want you to have a nice day ;-)");
+        logger.info(getDescription().getName() + " want you to have a nice day ;-)");
     }
 
     public String prefix(String msg, Boolean isMsgPrivate) {
