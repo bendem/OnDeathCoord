@@ -8,7 +8,7 @@ commands:
     odc:
         usage: |
             /<command> <reload> Reload config from file
-            /<command> <set> <config-node> <true|false> Activate or deactivate a functionnality
+            /<command> <set> <config-node> <true|false> Activate or deactivate a functionality
         description: OnDeathCoord commands
         permission: odc
 
