@@ -1,6 +1,6 @@
 package be.bendem.OnDeathCoord;
 
-import be.bendem.common.ChatFormatter;
+import be.bendem.chatformatter.ChatFormatter;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
