@@ -53,8 +53,8 @@ public class DeathListener implements Listener {
         if(plugin.getConfig().getBoolean("show-despawn-time", true)
                 && player.hasPermission("odc.view-messages.item-despawn")
                 && event.getDrops().size() != 0) {
-            playerMessage += plugin.getConfig().getString("despawn-time-message", "Your items will despawn at {despawn_time}");
-            playerMessage = injectInformations(playerMessage);
+            playerMessage += injectInformations(plugin.getConfig().getString(
+                "despawn-time-message", "Your items will despawn at {despawn_time}"));
         }
 
         if(!playerMessage.isEmpty()) {
