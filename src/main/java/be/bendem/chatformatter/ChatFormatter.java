@@ -9,10 +9,10 @@ import org.bukkit.ChatColor;
  */
 public class ChatFormatter {
 
-    protected static String format(String str, ChatColor format) {
+    public static String format(String str, ChatColor format) {
         return format(str, format, true);
     }
-    protected static String format(String str, ChatColor format, Boolean reset) {
+    public static String format(String str, ChatColor format, Boolean reset) {
         StringBuilder finalString = new StringBuilder().append(ChatColor.COLOR_CHAR).append(format.getChar()).append(str);
         if(reset) {
             finalString.append(ChatColor.COLOR_CHAR).append(ChatColor.RESET.getChar());

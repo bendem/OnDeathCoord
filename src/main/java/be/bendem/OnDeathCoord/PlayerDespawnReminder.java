@@ -7,11 +7,11 @@ import org.bukkit.entity.Player;
 
 public class PlayerDespawnReminder implements Runnable {
 
-    public OnDeathCoord plugin;
     public Player player;
+    public String msg;
 
-    PlayerDespawnReminder(OnDeathCoord plugin, Player player) {
-        this.plugin = plugin;
+    PlayerDespawnReminder(Player player, String msg) {
+        this.msg = msg;
         this.player = player;
     }
 
@@ -19,6 +19,6 @@ public class PlayerDespawnReminder implements Runnable {
         if(!player.isOnline()) {
             return;
         }
-        player.sendMessage(plugin.prefix(ChatFormatter.italic(plugin.getConfig().getString("despawn-message")), true));
+        player.sendMessage(msg);
     }
 }

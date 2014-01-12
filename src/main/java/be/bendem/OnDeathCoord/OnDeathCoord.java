@@ -34,8 +34,8 @@ public class OnDeathCoord extends JavaPlugin {
     }
 
     public String prefix(String msg, Boolean isMsgPrivate) {
-        if( isMsgPrivate && getConfig().getBoolean("prefix-private-messages")
-            || !isMsgPrivate && getConfig().getBoolean("prefix-public-messages")) {
+        if(isMsgPrivate && getConfig().getBoolean("prefix-private-messages")
+                || !isMsgPrivate && getConfig().getBoolean("prefix-public-messages")) {
             msg = "[" + ChatFormatter.green(getDescription().getName()) + "] " + msg;
         }
         return msg;

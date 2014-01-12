@@ -1,36 +1,41 @@
 # If true, the coordinates are added to the death message using the
 # messages setted after
 # If false, a private message will be send directly to the player
+#
+# All messages can contain tags which are used within ``{}``.
+# Tags available are player, you, coordinates, x, y, z, despawn_time
 public-death: true
 
-# These messages should contain 2 ``%s`` for each message!
-public-death-messages:
-    block_explosion:  "Un block a pété à la gueule de %s en %s"
-    contact:          "%s s'est frotté à un cactus en %s"
-    custom:           "%s est mort en %s"
-    drowning:         "%s est mort noyé en %s"
-    entity_attack:    "%s s'est fait défoncer en %s"
-    entity_explosion: "%s s'est fait exploser en %s"
-    fall:             "%s est tombé d'un peu haut en %s"
-    falling_block:    "%s s'est pris un bloc sur le crâne en %s"
-    fire:             "%s s'est brulé les doigts en %s"
-    fire_tick:        "%s est resté trop longtemps près du feu en %s"
-    lava:             "%s a pris un bain de lave en %s"
-    lightning:        "%s a pris un éclair sur le coin en %s"
-    magic:            "%s a subitement disparu en %s"
-    melting:          "%s a fondu? en %s"
-    poison:           "%s a mangé un truc empoisoné en %s"
-    projectile:       "%s s'est pris une flèche dans l'oeil en %s"
-    starvation:       "%s est crevé de fin en %s"
-    suffocation:      "%s est mort dans un bloc en %s"
-    suicide:          "%s s'est suicidé en %s"
-    thorns:           "%s a trop tapé dans une boule d'épines en %s"
-    void:             "%s est tombé dans le vide intersidéral en %s"
-    wither:           "%s s'est fait ravager par un wither en %s"
+# Traduction used for the tag "you" (so you can use color with it as well!)
+you-traduction: "Tu"
 
-# This message should contain one ``%s``
+public-death-messages:
+    block_explosion:  "Un block a pété à la gueule de {player} en {coordinates}"
+    contact:          "{player} s'est frotté à un cactus en {coordinates}"
+    custom:           "{player} est mort en {coordinates}"
+    drowning:         "{player} est mort noyé en {coordinates}"
+    entity_attack:    "{player} s'est fait défoncer en {coordinates}"
+    entity_explosion: "{player} s'est fait exploser en {coordinates}"
+    fall:             "{player} est tombé d'un peu haut en {coordinates}"
+    falling_block:    "{player} s'est pris un bloc sur le crâne en {coordinates}"
+    fire:             "{player} s'est brulé les doigts en {coordinates}"
+    fire_tick:        "{player} est resté trop longtemps près du feu en {coordinates}"
+    lava:             "{player} a pris un bain de lave en {coordinates}"
+    lightning:        "{player} a pris un éclair sur le coin en {coordinates}"
+    magic:            "{player} a subitement disparu en {coordinates}"
+    melting:          "{player} a fondu? en {coordinates}"
+    poison:           "{player} a mangé un truc empoisoné en {coordinates}"
+    projectile:       "{player} s'est pris une flèche dans l'oeil en {coordinates}"
+    starvation:       "{player} est crevé de faim en {coordinates}"
+    suffocation:      "{player} est mort dans un bloc en {coordinates}"
+    suicide:          "{player} s'est suicidé en {coordinates}"
+    thorns:           "{player} a trop tapé dans une boule d'épines en {coordinates}"
+    void:             "{player} est tombé dans le vide intersidéral en {coordinates}"
+    wither:           "{player} s'est fait ravager par un wither en {coordinates}"
+
+# The message to send to the player if public-death is set to false
 # Note that the despawn message will be added after this line
-private-death-message: "Vous êtes mort en %s."
+private-death-message: "{you} es mort en {coordinates}."
 
 # If true, a message will be added to know when the stuff will despawn
 # Note that the message is only shown if the player drop items
@@ -39,10 +44,31 @@ show-despawn-time: true
 remind-at-despawn: true
 # Default item despawn time is 5 minutes (300 seconds)
 despawn-time: 300
-# This message should contain one ``%s``
-despawn-time-message: "Votre stuff déspawnera à %s"
+# The message to send to the player to know when his items will despawn
+despawn-time-message: "Votre stuff déspawnera à {despawn_time}"
+# The message to send to the player when his items has despawned
 despawn-message: "Votre stuff vient de disparaitre..."
 
 # Set to false to remove the [OnDeathCoord] prefix from the chat messages
 prefix-public-messages: true
 prefix-private-messages: true
+
+# The colors to apply to the tags in the messages
+# All the color can be found at http://jd.bukkit.org/beta/apidocs/org/bukkit/ChatColor.html
+tag-colors:
+    player:
+        - dark_green
+        - bold
+    you:
+        - dark_green
+        - bold
+    coordinates:
+        - dark_gray
+    x:
+        - dark_gray
+    y:
+        - dark_gray
+    z:
+        - dark_gray
+    despawn_time:
+        - red
