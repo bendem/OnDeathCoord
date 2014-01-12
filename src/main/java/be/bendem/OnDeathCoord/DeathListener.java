@@ -31,11 +31,12 @@ public class DeathListener implements Listener {
             + Math.round(playerLocation.getZ())
         );
 
-        if(plugin.getConfig().getBoolean("public-death")) {
+        if(plugin.getConfig().getBoolean("public-death", true)) {
             deathMessage = plugin.getConfig().getString(
                 "public-death-messages." + player.getLastDamageCause().getCause().name().toLowerCase(),
                 "%s died at %s"
             );
+
             // injecting informations
             deathMessage = String.format(deathMessage, ChatFormatter.darkGreen(player.getDisplayName()), coordinates);
             event.setDeathMessage(plugin.prefix(deathMessage, false));
@@ -44,12 +45,13 @@ public class DeathListener implements Listener {
                 "private-death-message",
                 ChatFormatter.bold("You") + ChatFormatter.darkGray(" died at ") + "%s"
             );
+
             // injecting informations
             deathMessage = String.format(deathMessage, coordinates);
             playerMessage = deathMessage + " ";
         }
 
-        if(plugin.getConfig().getBoolean("show-despawn-time")
+        if(plugin.getConfig().getBoolean("show-despawn-time", true)
            && player.hasPermission("odc.view-messages.item-despawn")
            && event.getDrops().size() != 0) {
             playerMessage += plugin.getConfig().getString("despawn-time-message", "Your items will despawn at %s");
@@ -65,7 +67,7 @@ public class DeathListener implements Listener {
             player.sendMessage(plugin.prefix(playerMessage, true));
         }
 
-        if(plugin.getConfig().getBoolean("remind-at-despawn")
+        if(plugin.getConfig().getBoolean("remind-at-despawn", true)
            && player.hasPermission("odc.view-messages.item-despawn.reminder")
            && event.getDrops().size() != 0) {
             // There are normally (I mean without lag) 20 ticks per seconds
