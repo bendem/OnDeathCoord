@@ -1,5 +1,5 @@
 name: ${pom.name}
-main: ${pom.groupId}.${pom.name}
+main: be.bendem.bukkit.ondeathcoord.OnDeathCoord
 version: ${pom.version}
 author: bendem
 description: Display your death coordinates in the chat.

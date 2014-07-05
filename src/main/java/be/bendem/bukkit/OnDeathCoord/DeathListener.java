@@ -1,6 +1,6 @@
-package be.bendem.OnDeathCoord;
+package be.bendem.bukkit.ondeathcoord;
 
-import be.bendem.chatformatter.ChatFormatter;
+import be.bendem.bukkit.chatformatter.ChatFormatter;
 
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
@@ -12,7 +12,6 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 
 public class DeathListener implements Listener {
 

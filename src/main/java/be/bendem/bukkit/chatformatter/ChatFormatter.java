@@ -1,4 +1,4 @@
-package be.bendem.chatformatter;
+package be.bendem.bukkit.chatformatter;
 
 import org.bukkit.ChatColor;
 

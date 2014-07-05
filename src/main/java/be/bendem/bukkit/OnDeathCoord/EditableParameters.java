@@ -1,4 +1,4 @@
-package be.bendem.OnDeathCoord;
+package be.bendem.bukkit.ondeathcoord;
 
 import java.util.ArrayList;
 import java.util.List;

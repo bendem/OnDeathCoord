@@ -1,6 +1,4 @@
-package be.bendem.OnDeathCoord;
-
-import be.bendem.chatformatter.ChatFormatter;
+package be.bendem.bukkit.ondeathcoord;
 
 import org.bukkit.entity.Player;
 
